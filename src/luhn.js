@@ -1,7 +1,13 @@
-export function isValidCardNumber(number) {
-  const clean = number.replace(/\D/g, '');
+function isValidCardNumber(number) {
+  const normalized = number.trim();
 
-  if (!clean) {
+  if (!/^\d[\d\s-]*\d$|^\d$/.test(normalized)) {
+    return false;
+  }
+
+  const clean = normalized.replace(/[\s-]/g, '');
+
+  if (clean.length < 13 || clean.length > 19) {
     return false;
   }
 
@@ -24,3 +30,6 @@ export function isValidCardNumber(number) {
 
   return sum % 10 === 0;
 }
+
+export { isValidCardNumber };
+export default isValidCardNumber;

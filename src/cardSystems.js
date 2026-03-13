@@ -22,7 +22,13 @@ const cardSystems = [
 ];
 
 export function detectPaymentSystem(number) {
-  const clean = number.replace(/\s|-/g, '');
+  const normalized = number.trim();
+
+  if (!/^\d[\d\s-]*\d$|^\d$/.test(normalized)) {
+    return null;
+  }
+
+  const clean = normalized.replace(/[\s-]/g, '');
   const system = cardSystems.find((item) => item.pattern.test(clean));
   return system ? system.name : null;
 }

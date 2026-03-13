@@ -2,14 +2,14 @@
 
 [![Deploy to GitHub Pages](https://github.com/ValeriaZevs/credit-card-validator/actions/workflows/pages.yml/badge.svg)](https://github.com/ValeriaZevs/credit-card-validator/actions/workflows/pages.yml)
 
-**GitHub Pages:** https://<your-username>.github.io/credit-card-validator/
+**GitHub Pages:** https://valeriazevs.github.io/credit-card-validator/
 
 Виджет для проверки номера банковской карты:
 - определяет платёжную систему (Visa, MasterCard, American Express, Discover, Мир);
-- валидирует номер по алгоритму Луна;
-- подсвечивает определённую платёжную систему в интерфейсе.
+- проверяет корректность номера по алгоритму Луна;
+- подсвечивает иконку платёжной системы и показывает результат проверки.
 
-## Локальный запуск
+## Запуск проекта
 
 ```bash
 npm install
@@ -26,4 +26,4 @@ npm run build
 
 ## E2E
 
-В каталоге `e2e` добавлен пример e2e-тестирования с Playwright.
+В каталоге `e2e` находится пример e2e-тестирования на Playwright.
