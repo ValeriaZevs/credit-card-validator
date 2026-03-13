@@ -1,4 +1,4 @@
-name: CI and optional GitHub Pages deploy
+name: CI and GitHub Pages deploy
 
 on:
   push:
@@ -46,7 +46,6 @@ jobs:
           path: ./dist
 
   deploy:
-    if: ${{ vars.ENABLE_PAGES == 'true' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
