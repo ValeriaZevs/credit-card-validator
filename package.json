@@ -4,11 +4,11 @@
     "description": "Credit Card Validator widget",
     "private": true,
     "scripts": {
-        "start": "webpack serve --mode development --no-open",
-        "build": "webpack --mode production",
-        "lint": "eslint .",
-        "test": "jest --coverage",
-        "test:watch": "jest --watch",
+        "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --mode development --no-open",
+        "build": "node ./node_modules/webpack/bin/webpack.js --mode production",
+        "lint": "node ./node_modules/eslint/bin/eslint.js .",
+        "test": "node ./node_modules/jest/bin/jest.js --coverage",
+        "test:watch": "node ./node_modules/jest/bin/jest.js --watch",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d dist"
     },

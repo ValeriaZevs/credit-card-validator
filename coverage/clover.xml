@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1773392716324" clover="3.2.0">
+  <project timestamp="1773392716325" name="All files">
+    <metrics statements="24" coveredstatements="24" conditionals="14" coveredconditionals="14" methods="3" coveredmethods="3" elements="41" coveredelements="41" complexity="0" loc="24" ncloc="24" packages="1" files="2" classes="2"/>
+    <file name="cardSystems.js" path="C:\Users\Валери\credit-card-validator\src\cardSystems.js">
+      <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="25" count="8" type="stmt"/>
+      <line num="27" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="28" count="2" type="stmt"/>
+      <line num="31" count="6" type="stmt"/>
+      <line num="32" count="20" type="stmt"/>
+      <line num="33" count="6" type="cond" truecount="2" falsecount="0"/>
+    </file>
+    <file name="luhn.js" path="C:\Users\Валери\credit-card-validator\src\luhn.js">
+      <metrics statements="17" coveredstatements="17" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+      <line num="2" count="12" type="stmt"/>
+      <line num="4" count="12" type="cond" truecount="2" falsecount="0"/>
+      <line num="5" count="3" type="stmt"/>
+      <line num="8" count="9" type="stmt"/>
+      <line num="10" count="9" type="cond" truecount="4" falsecount="0"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="14" count="7" type="stmt"/>
+      <line num="15" count="7" type="stmt"/>
+      <line num="17" count="7" type="stmt"/>
+      <line num="18" count="111" type="stmt"/>
+      <line num="20" count="111" type="cond" truecount="2" falsecount="0"/>
+      <line num="21" count="55" type="stmt"/>
+      <line num="22" count="55" type="cond" truecount="2" falsecount="0"/>
+      <line num="23" count="17" type="stmt"/>
+      <line num="27" count="111" type="stmt"/>
+      <line num="28" count="111" type="stmt"/>
+      <line num="31" count="7" type="stmt"/>
+    </file>
+  </project>
+</coverage>
