@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 concurrency:
   group: pages
@@ -20,6 +20,8 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -33,6 +35,8 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -41,41 +45,19 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-  check_pages:
-    runs-on: ubuntu-latest
-    outputs:
-      enabled: ${{ steps.probe.outputs.enabled }}
-    steps:
-      - id: probe
-        env:
-          GH_TOKEN: ${{ github.token }}
-          OWNER: ${{ github.repository_owner }}
-          REPO: ${{ github.event.repository.name }}
-        run: |
-          status=$(curl -s -o /dev/null -w "%{http_code}" \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${OWNER}/${REPO}/pages")
-
-          if [ "$status" = "200" ]; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"
-            echo "GitHub Pages is enabled; deploy job will run."
-          else
-            echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "GitHub Pages is not enabled (HTTP $status); deploy job will be skipped."
-          fi
-
   deploy:
-    if: ${{ needs.check_pages.outputs.enabled == 'true' }}
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: [build, check_pages]
-    runs-on: ubuntu-latest
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
